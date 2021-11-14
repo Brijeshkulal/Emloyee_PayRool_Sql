@@ -1,0 +1,68 @@
+-- UC1
+create database payroll_service;
+show databases;
+use payroll_service;
+
+-- UC2
+create table employee_payroll(
+	empId int,
+    empName varchar(25),
+    salary int,
+    startDate Date
+);
+
+-- UC3
+insert into employee_payroll values(1, 'Brijesh', 32000, '2018-07-18');
+insert into employee_payroll values(2, 'Rahul', 25000, '2019-07-24');
+insert into employee_payroll values(3, 'Shreya', 18000, '2018-01-10');
+insert into employee_payroll values(4, 'Dashwath', 32000, '2020-05-01');
+insert into employee_payroll values(5, 'Anusha', 15000, '2017-07-18');
+
+-- UC4
+select * from employee_payroll;
+
+-- UC5
+select salary from employee_payroll 
+where empName = 'Rahul';
+
+select empName from employee_payroll
+where startDate between cast('2018-07-18' as date) and date(now());
+
+-- UC6
+alter table employee_payroll add gender varchar(1);
+update employee_payroll 
+set gender = 'M'
+where empName = 'Brijesh' or empName ='Rahul' or empName ='Dashwath'; 
+
+update employee_payroll 
+set gender = 'F'
+where empName = 'Anusha' or empName ='Shreya'; 
+
+-- UC7
+select count(*) from employee_payroll 
+where salary > 20000;
+select avg(salary) from employee_payroll;
+select max(salary) from employee_payroll;
+select sum(Salary) from employee_payroll WHERE Gender = 'F' GROUP BY Gender;
+select sum(Salary) from employee_payroll WHERE Gender = 'M' GROUP BY Gender;
+
+select avg(Salary) from employee_payroll WHERE Gender = 'F' GROUP BY Gender;
+select avg(Salary) from employee_payroll WHERE Gender = 'M' GROUP BY Gender;
+
+select min(Salary) from employee_payroll WHERE Gender = 'F' GROUP BY Gender;
+select min(Salary) from employee_payroll WHERE Gender = 'M' GROUP BY Gender;
+
+select max(Salary) from employee_payroll WHERE Gender = 'F' GROUP BY Gender;
+select max(Salary) from employee_payroll WHERE Gender = 'M' GROUP BY Gender;
+
+select count(Salary) from employee_payroll WHERE Gender = 'F' GROUP BY Gender;
+select count(Salary) from employee_payroll WHERE Gender = 'M' GROUP BY Gender;
+
+select sum(salary), gender from employee_payroll
+group by gender;
+
+-- UC8
+alter table employee_payroll add department varchar(20) not null;
+alter table employee_payroll add phoneNumber varchar(20);
+alter table employee_payroll add address varchar(30);
+
