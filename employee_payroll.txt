@@ -66,3 +66,10 @@ alter table employee_payroll add department varchar(20) not null;
 alter table employee_payroll add phoneNumber varchar(20);
 alter table employee_payroll add address varchar(30);
 
+-- UC9
+alter table employee_payroll add Basic_pay float after salary;
+alter table employee_payroll add Deduction float after Basic_pay;
+alter table employee_payroll add Taxable_pay float after Deduction;
+alter table employee_payroll add Income_tax float after Taxable_pay;
+alter table employee_payroll add Net_pay float after Income_tax;
+desc employee_payroll;
